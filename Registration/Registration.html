@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+
+<head>
+  <title>
+    Registration Form
+  </title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+
+  <style>
+    h1 {
+      color: aqua;
+      text-align: center;
+    }
+
+    h3 {
+      color: rgb(0, 0, 0);
+      text-align: center;
+    }
+
+    .container {
+      margin: 20px;
+      width: 30%;
+      /* border: 10px solid blue;  */
+      margin-left: 450px;
+      border: 1px solid;
+      padding: 50px;
+      box-shadow: 5px 10px;
+      background-color: aqua;
+    }
+
+    .button {
+      font-size: 20px;
+      background-color: rgb(145, 255, 0);
+      margin: 10px 50px;
+      border-radius: 10px;
+
+    }
+
+    body{
+      background-color: blueviolet;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h1> Register </h1>
+  <h3>Please fill in this form to create an account</h3>
+  <form action="#" name="myForm" onsubmit = "return validation()">
+    <div class="container">
+      <div class="form-group">
+        <label for="email" id="email">Email*</label><br>
+        <input type="email" name="emailids" id="emails" />
+
+        <span id="emlids" class="text-danger font-weight-regular" > </span>
+      </div><br>
+
+      <div class = "form-group">
+      <label for="pwd">Password</label><br>
+      <input type="password" name="pwd" id="pwd" />
+
+      <span id="pass1" class="text-danger font-weight-regular">   </span>
+      </div><br><br>
+
+      <div class = "form-group">
+      <label for="pwd">Confirm Password</label><br>
+      <input type="password" name="cnfrmpass" id="cnfrmpass" />
+
+      <span id="confrmpass"class="text-danger font-weight-regular" >
+      </span>
+      </div><br><br>
+
+      <input type="checkbox" name="check" id="check-1">I agree to the <a href = "Terms.html">terms & conditions</a></input><br><br><br>
+      <!--  <label for = "check" id = "check-1"></label><br>  -->
+
+      <!-- <input type="submit" class="button" name = "button" value="submit"/> -->
+
+      <input type="submit" name="submit" value="Submit" class="btn btn-primary" />
+      <input type="reset" name="reset" value="reset" class="btn btn-secondary" autocomplete="off" />
+      
+
+      <p> Already have an account? <a href="#">Sign In</a></p>
+    </div>
+
+  </form>
+<!--
+   <script type="text/javascript"> -->
+    <script>
+    function validation() {
+      var emails = document.getElementById("emails").value;
+      var pass = document.getElementById("pwd").value;
+      var confirmpass = document.getElementById("cnfrmpass").value;
+
+      if (emails == "") {
+        document.getElementById("emlids").innerHTML = 
+        "\n **Please fill the email id field";
+        return false;
+      }
+      if (emails.indexOf("@") <= 0) {
+        document.getElementById("emlids").innerHTML = 
+        "\n **Invalid Email";
+        return false;
+      }
+      if (emails.charAt(emails.length - 4) != "." &&
+        emails.charAt(emails.length - 3) != ".") {
+        document.getElementById("emlids").innerHTML = 
+        "\n **Invalid Email";
+        return false;
+      }
+
+      if (pass == "") {
+        document.getElementById("pass1").innerHTML =
+          "\n ** Please fill the password field";
+        return false;
+      }
+      if (pass.length <= 5 || pass.length > 20) {
+        document.getElementById("pass1").innerHTML =
+          "\n ** Passwords length must be between  5 and 20";
+        return false;
+      }
+
+      if (pass != confirmpass) {
+        document.getElementById("confrmpass").innerHTML =
+          "\n ** Password Mismatch";
+        return false;
+      }
+
+      if (confirmpass == "") {
+        document.getElementById("confrmpass").innerHTML =
+          "\n ** Please fill the confirmpassword field";
+        return false;
+      }
+
+      alert("Form Submitted");
+
+    }
+
+  </script>
+</body>
+
+</html>
